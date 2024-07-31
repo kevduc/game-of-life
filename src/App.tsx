@@ -6,7 +6,7 @@ type Brush = Cell | undefined;
 
 const MouseButtonsBrush = {
   0: 1,
-  2: 0,
+  2: 0, // right click
 } as const satisfies Record<number, Cell>;
 
 const isSupportedMouseButton = (mouseButton: number): mouseButton is keyof typeof MouseButtonsBrush =>
