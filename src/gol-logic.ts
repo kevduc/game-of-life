@@ -1,10 +1,11 @@
-export type Grid = number[][];
-type Rule = (cell: number, neighboringCells: number) => number;
+export type Cell = 0 | 1;
+export type Grid = Cell[][];
+type Rule = (cell: Cell, neighboringCells: number) => Cell;
 
 const sum = (numbers: number[]) => numbers.reduce((sum, value) => sum + value, 0);
 
-export const golRule: Rule = (cell: number, numberOfNeighbors: number) => {
-  const nextState = [0, 0, cell, 1, 0, 0, 0, 0, 0][numberOfNeighbors];
+export const golRule: Rule = (cell, numberOfNeighbors) => {
+  const nextState = ([0, 0, cell, 1, 0, 0, 0, 0, 0] as const)[numberOfNeighbors];
   if (nextState === undefined) throw new Error('undefined nextState');
   return nextState;
 };
